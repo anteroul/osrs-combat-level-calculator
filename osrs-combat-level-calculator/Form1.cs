@@ -38,15 +38,58 @@ namespace osrs_combat_level_calculator
 
         private void button1_Click(object sender, EventArgs e)
         {
-            atk = Convert.ToInt32(textBox1.Text);
-            str = Convert.ToInt32(textBox2.Text);
-            hps = Convert.ToInt32(textBox3.Text);
-            def = Convert.ToInt32(textBox4.Text);
-            rng = Convert.ToInt32(textBox5.Text);
-            mag = Convert.ToInt32(textBox6.Text);
-            pra = Convert.ToInt32(textBox7.Text);
-
             combatLvl.Text = calc.GetCombatLvl(atk, str, hps, def, rng, mag, pra).ToString();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            atk = getFieldValue(textBox1.Text);
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            str = getFieldValue(textBox2.Text);
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            hps = getFieldValue(textBox3.Text);
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            def = getFieldValue(textBox4.Text);
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+            rng = getFieldValue(textBox5.Text);
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+            mag = getFieldValue(textBox6.Text);
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+            pra = getFieldValue(textBox7.Text);
+        }
+
+        private int getFieldValue(string field)
+        {
+            int value;
+
+            if (int.TryParse(field, out value) && field.Length > 0)
+            {
+                value = Convert.ToInt32(field);
+
+                if (value <= 0)
+                    return 1;
+
+                return value;
+            }
+            return 1;
         }
     }
 }
