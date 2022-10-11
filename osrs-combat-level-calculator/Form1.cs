@@ -38,6 +38,14 @@ namespace osrs_combat_level_calculator
 
         private void button1_Click(object sender, EventArgs e)
         {
+            textBox1.Text = atk.ToString();
+            textBox2.Text = str.ToString();
+            textBox3.Text = hps.ToString();
+            textBox4.Text = def.ToString();
+            textBox5.Text = rng.ToString();
+            textBox6.Text = mag.ToString();
+            textBox7.Text = pra.ToString();
+
             combatLvl.Text = calc.GetCombatLvl(atk, str, hps, def, rng, mag, pra).ToString();
         }
 
@@ -54,6 +62,7 @@ namespace osrs_combat_level_calculator
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
             hps = getFieldValue(textBox3.Text);
+            if (hps < 10) hps = 10;
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
